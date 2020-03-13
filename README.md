@@ -3,7 +3,7 @@ Installation guide of Docker for Windows 10 without enabling Hyper-v
 
 Manual steps :
 
-1- Enable containers feature in Windows
+1- Enable the containers feature in Windows 10
   Start a PowerShell as Administrator
   Run : Enable-WindowsOptionalFeature -FeatureName containers -Online
   Reboot the system
