@@ -20,7 +20,7 @@ Manual steps :
 
 5. Add the docker install directory ($env:ProgramFiles\docker) to your PATH environment variable
 	- Close the PowerShell window and start a new PowerShell as Administrator
-	- Check if the docker command is working (should return an error at this stage). If not check you environment variable and try to fix that.
+	- Check if the docker command is found (should return an error at this stage). If not check you environment variable and try to fix that.
 
 6. Register the Docker service
 	- Run : dockerd --exec-opt isolation=process --register-service
