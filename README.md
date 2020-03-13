@@ -24,16 +24,16 @@ Manual steps :
 	- Run : dockerd --exec-opt isolation=process --register-service
 	- Set the Docker Engine service start mode to manual if you don't want to run your containers at anytime
 	- Ensure that the Docker Engine service is running
+
+ 7. Install docker-compose (1.25.4 here) if required
+	- Start a PowerShell as Administrator again
+	- Run : Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\docker-compose.exe
    
- 7. Test you installation
+ 8. Test your installation
 	- Start a PowerShell as Administrator
 	- Run : docker run hello-world:nanoserver
 	- Docker should download a container image (can take a bit of time depending of network bandwidth) and display a message
-    
- 8. Install docker-compose (1.25.4 here) if required
-	- Start a PowerShell as Administrator again
-	- Run : Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\docker-compose.exe
-    
-Now you can enjoy Docker containers in Windows 10 without virtualization overhead. The only constraint is that you have to choose a container system version that is matching your OS version. Run winver command in order to check what Windows 10 version you are running. I tested with 1903 and 1909 and I found that Windows 10 version 1909 can run 1903 based containers as well.
+        
+Now you can enjoy Docker containers in Windows 10 without the virtualization overhead. The only constraint is that you have to choose a container system version that is matching your OS version. Run winver command in order to check what Windows 10 version you are running. I tested with 1903 and 1909 and I found that Windows 10 version 1909 can run 1903 based containers as well.
  
   
