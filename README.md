@@ -1,5 +1,5 @@
 # Windows-10-Docker
-Installation guide of Docker in Windows 10 without enabling Hyper-v
+Installation guide of Docker for Windows 10 without enabling Hyper-v
 
 Manual steps :
 
