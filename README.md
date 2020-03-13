@@ -19,6 +19,8 @@ Manual steps :
 	- Run : Remove-Item -Force docker-19.03.5.zip
 
 5. Add the docker install directory ($env:ProgramFiles\docker) to your PATH environment variable
+	- Close the PowerShell window and start a PowerShell as Administrator
+	- Check if the docker command is working (should return an error at this stage). If not check you environment variable and try to fix that.
 
 6. Register the Docker service
 	- Run : dockerd --exec-opt isolation=process --register-service
@@ -26,11 +28,11 @@ Manual steps :
 	- Ensure that the Docker Engine service is running
 
  7. Install docker-compose (1.25.4 here) if required
-	- Start a PowerShell as Administrator again
+	- Start a PowerShell as Administrator
 	- Run : Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\docker-compose.exe
    
  8. Test your installation
-	- Start a PowerShell as Administrator
+	- Start a PowerShell as Administrator again
 	- Run : docker run hello-world:nanoserver
 	- Docker should download a container image (can take a bit of time depending of network bandwidth) and display a message
         
