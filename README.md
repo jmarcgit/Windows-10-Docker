@@ -30,7 +30,7 @@ Manual steps :
 	- Run : docker run hello-world:nanoserver
 	- Docker should download a container image (can take a bit of time depending of network bandwidth) and display a message
     
- 8. Install docker-compose (1.25.4 here)
+ 8. Install docker-compose (1.25.4 here) if required
 	- Start a PowerShell as Administrator again
 	- Run : Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\docker-compose.exe
     
