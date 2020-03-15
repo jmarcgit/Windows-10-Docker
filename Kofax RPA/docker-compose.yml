@@ -1,0 +1,115 @@
+# example of docker-compose file, that brings up a MSSQL instance,
+# a Management Console, a RoboServer, a Synchronizer, a Robot Filesystem and Kapplets
+# RoboServer count can be scaled
+version: '2.1'
+networks:
+  net:
+services:
+  sqlserver-service:
+    build:
+      context: .
+      dockerfile: docker-win\sqlserver\Dockerfile
+    image: sqlserver_db_created:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Scheduler1!
+    ports:
+      - 1433:1433
+    networks:
+      - net
+  managementconsole-service:
+    build:
+      context: .
+      dockerfile: docker-win\managementconsole\Dockerfile
+    image: managementconsole:11.0.0.0
+    depends_on:
+      - sqlserver-service
+    ports:
+      - 8080:8080
+    environment:
+      - CONTEXT_RESOURCE_VALIDATIONQUERY=SELECT 1
+      - CONTEXT_RESOURCE_USERNAME=sa
+      - CONTEXT_RESOURCE_PASSWORD=Scheduler1!
+      - CONTEXT_RESOURCE_DRIVERCLASSNAME=com.microsoft.sqlserver.jdbc.SQLServerDriver
+      - CONTEXT_RESOURCE_URL=jdbc:sqlserver://sqlserver-service:1433;databaseName=scheduler
+      - CONTEXT_CHECK_DATABASE_TIMEOUT=600
+      # enter your license here, or type it through the GUI in first login
+      - CONFIG_LICENSE_NAME=
+      - CONFIG_LICENSE_EMAIL=
+      - CONFIG_LICENSE_COMPANY=
+      - CONFIG_LICENSE_PRODUCTIONKEY=
+      - CONFIG_LICENSE_NONPRODUCTIONKEY=
+    networks:
+      - net
+  roboserver-service:
+    build:
+      context: .
+      dockerfile: docker-win\roboserver\Dockerfile
+    image: roboserver:11.0.0.0
+    depends_on:
+      - managementconsole-service
+      - sqlserver-service
+    networks:
+      - net
+    environment:
+      - ROBOSERVER_ENABLE_MC_REGISTRATION=true
+      - ROBOSERVER_MC_URL=http://managementconsole-service:8080/
+      - ROBOSERVER_MC_CLUSTER=Non Production
+      - ROBOSERVER_MC_USERNAME=admin
+      - ROBOSERVER_MC_PASSWORD=admin
+      - ROBOSERVER_ENABLE_SOCKET_SERVICE=true
+      - WRAPPER_MAX_MEMORY=2048
+  synchronizer-service:
+    build:
+      context: .
+      dockerfile: docker-win\synchronizer\Dockerfile
+    image: synchronizer:11.0.0.0
+    depends_on:
+      - managementconsole-service
+    networks:
+      - net
+    environment:
+      - SYNCHRONIZER_MC_URL=http://managementconsole-service:8080/
+      - SYNCHRONIZER_USERNAME=admin
+      - SYNCHRONIZER_PASSWORD=admin
+      - SYNCHRONIZER_INTERVAL=3
+  robotfilesystem-service:
+    build:
+      context: .
+      dockerfile: docker-win\robotfilesystem\Dockerfile
+    image: robotfilesystem:11.0.0.0
+    depends_on:
+      - managementconsole-service
+    ports:
+      - 8081:8080
+    networks:
+      - net
+    environment:
+      - RFS_MC_URL=http://managementconsole-service:8080/
+      - RFS_MC_USERNAME=admin
+      - RFS_MC_PASSWORD=admin
+      - RFS_DATA_PATH=C:/data
+      - RFS_CREATE_FOLDERS=true
+      - RFS_ALLOW_ABSOLUTE_PATHS=true
+  kapplets-service:
+    build:
+      context: .
+      dockerfile: docker-win\kapplets\Dockerfile
+    image: kapplets:11.0.0.0
+    depends_on:
+      - managementconsole-service
+    ports:
+      - 8082:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver-service:1433;database=kapplets;SelectMethod=cursor;encrypt=false
+      - SPRING_DATASOURCE_DRIVERCLASSNAME=com.microsoft.sqlserver.jdbc.SQLServerDriver
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=Scheduler1!
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.SQLServer2012Dialect
+      - KAPPLETS_SERVICES_MC_CONNECTION_URL=http://managementconsole-service:8080/
+      - KAPPLETS_SERVICES_EXECUTION_CLUSTER_NAME=Non Production
+      - KAPPLETS_SERVICES_MC_CONNECTION_USERNAME=admin
+      - KAPPLETS_SERVICES_MC_CONNECTION_PASSWORD=admin
+      - SLEEP_DELAY=30s
+    networks:
+      - net
