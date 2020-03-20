@@ -39,5 +39,9 @@ Manual steps :
 	- Docker should download a container image (can take a bit of time depending of the network bandwidth) and display a message
         
 Now you can enjoy Docker containers in Windows 10 without the virtualization overhead. The only constraint is that you have to choose a container system version that is matching your OS version. Run winver command in order to check what Windows 10 version you are running. I tested with 1903 and 1909 and I found that Windows 10 version 1909 can run 1903 based containers as well.
+
+A good example of Docker deployment could be to install Portainer :
+	- Run : docker pull portainer/portainer
+	- Run : docker run -d --restart always --name portainer --isolation process -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
  
   
