@@ -42,6 +42,6 @@ Now you can enjoy Docker containers in Windows 10 without the virtualization ove
 
 A good example of Docker deployment could be to install Portainer :
 - Run : docker pull portainer/portainer
-- Run : docker run -d --restart always --name portainer --isolation process -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
+- Run : docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
  
   
