@@ -10,13 +10,13 @@ Manual steps :
   
 2. Download the Docker Engine zip file (Docker 19.03.5 here)
 	- Start a PowerShell as Administrator
-	- Run : Invoke-WebRequest -UseBasicParsing -OutFile docker-19.03.5.zip https://download.docker.com/components/engine/windows-server/19.03/docker-19.03.5.zip
+	- Run : Invoke-WebRequest -UseBasicParsing -OutFile docker.zip https://master.dockerproject.org/windows/x86_64/docker.zip
 
 3. Extract the archive
-	- Run : Expand-Archive docker-19.03.5.zip -DestinationPath $Env:ProgramFiles -Force
+	- Run : Expand-Archive docker.zip -DestinationPath $Env:ProgramFiles -Force
 
 4. Clean up the zip file
-	- Run : Remove-Item -Force docker-19.03.5.zip
+	- Run : Remove-Item -Force docker.zip
 
 5. Add the docker install directory ($env:ProgramFiles\docker) to your PATH environment variable
 	- Close the PowerShell window
