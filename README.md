@@ -8,7 +8,7 @@ Manual steps :
 	- Run : Enable-WindowsOptionalFeature -FeatureName containers -Online
 	- Reboot the system
   
-2. Download the Docker Engine zip file (Docker 19.03.5 here)
+2. Download the Docker Engine zip file
 	- Start a PowerShell as Administrator
 	- Run : Invoke-WebRequest -UseBasicParsing -OutFile docker.zip https://master.dockerproject.org/windows/x86_64/docker.zip
 
