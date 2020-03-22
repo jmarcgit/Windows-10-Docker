@@ -33,7 +33,7 @@ Manual steps :
 	- Start a PowerShell as Administrator
 	- Run : Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\docker-compose.exe
  
- 8. I recommend to exclude the $Env:ProgramData\docker directory from your antivirus scan path
+ 8. I recommend to exclude the $Env:ProgramData\docker directory from your antivirus scan path ($Env:ProgramData\docker is where Docker will store layers and volumes)
  
  9. Test your installation
 	- Start a PowerShell as Administrator again
