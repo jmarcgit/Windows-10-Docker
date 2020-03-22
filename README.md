@@ -32,8 +32,10 @@ Manual steps :
  7. Install docker-compose (1.25.4 here) if required
 	- Start a PowerShell as Administrator
 	- Run : Invoke-WebRequest "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Windows-x86_64.exe" -UseBasicParsing -OutFile $Env:ProgramFiles\Docker\docker-compose.exe
-   
- 8. Test your installation
+ 
+ 8. I recommend to exclude the $Env:ProgramData\docker directory from your antivirus scan path
+ 
+ 9. Test your installation
 	- Start a PowerShell as Administrator again
 	- Run : docker run hello-world:nanoserver
 	- Docker should download a container image (can take a bit of time depending of the network bandwidth) and display a message
