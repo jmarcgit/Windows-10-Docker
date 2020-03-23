@@ -57,4 +57,4 @@ If you want to uninstall :
   
 Known issues :
 - When removing images or containers sometimes physical layers aren't removed from the disk. This means that disk usage will grow and some cleaning will be needed after a while. (Stop docker service, run docker-ci-zap in order to remove the $Env:ProgramData\docker directory and start docker service again)
--Windows 10 could complain about unregistered Windows copy. The problem was introduced by Windows update patches. A system reboot solves the problem for me.
+- Windows 10 could complain about unregistered Windows copy. The problem was introduced by Windows update patches. A system reboot solves the problem for me.
