@@ -49,8 +49,9 @@ If you don't like the CLI you can now install Portainer :
 
 If you want to uninstall :
 
-- Stop the Docker Engine service
-- Run : dockerd --unregister-service
-- Remove the $Env:ProgramFiles\docker directory
-- Remove the $Env:ProgramData\docker directory (I recommend using docker-ci-zap https://github.com/moby/docker-ci-zap because some files have special access rights)
+1. Stop the Docker Engine service
+2. Run : dockerd --unregister-service
+3. Remove the $Env:ProgramFiles\docker directory
+4. Remove the $Env:ProgramData\docker directory (I recommend using docker-ci-zap https://github.com/moby/docker-ci-zap because some files have special access rights)
+5. Remove $env:ProgramFiles\docker from your PATH environment variable
   
