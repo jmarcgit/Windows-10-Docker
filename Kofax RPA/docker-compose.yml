@@ -13,8 +13,11 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Scheduler1!
+      - attach_dbs=[{'dbName':'scheduler','dbFiles':['C:\\SQLData\\scheduler.mdf','C:\\SQLData\\scheduler_log.ldf']},{'dbName':'kapplets','dbFiles':['C:\\SQLData\\kapplets.mdf','C:\\SQLData\\kapplets_log.ldf']}]
     ports:
       - 1433:1433
+    volumes:
+      - sqldata:C:\SQLData
     networks:
       - net
   managementconsole-service:
@@ -113,3 +116,5 @@ services:
       - SLEEP_DELAY=30s
     networks:
       - net
+volumes:
+  sqldata:
