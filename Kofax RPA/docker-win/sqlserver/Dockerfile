@@ -1,7 +1,7 @@
 # escape=`
 
 #FROM microsoft/mssql-server-windows-express:latest
-FROM kkbruce/mssql-server-windows-express:windowsservercore-1903
+FROM octopusdeploy/mssql-server-windows-express:1903
 
 COPY docker-win/sqlserver/script.sql /
 
