@@ -53,8 +53,8 @@ In $Env:ProgramData\docker\config you can create a daemon.json file in order to 
 "storage-opts": ["size=30GB"]
 }
 - fixed-cidr : change the adress range of the containers nat network. Default range was conflicting with my VPN.
-- dns : by default containers don't use DNS, I use Google DNS servers
-- storage-opts : by default the max storage per image is 20GB.
+- dns : containers don't use DNS by default. I use Google DNS servers
+- storage-opts : the default max storage per image is 20GB.
 
 If you want to uninstall :
 
