@@ -57,6 +57,7 @@ In $Env:ProgramData\docker\config you can create a daemon.json file in order to 
 - dns : containers don't use DNS by default. I use Google DNS servers
 - storage-opts : the default max storage per image is 20GB
 - group : users allowed to run docker cli. Default is Administrators
+You have to restart the Docker service in order to apply the changes. A system reboot is recommended if you change the network addresses
 
 If you want to uninstall :
 
