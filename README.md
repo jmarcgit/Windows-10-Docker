@@ -46,6 +46,15 @@ If you don't like the CLI you can now install Portainer :
 - Run : docker pull portainer/portainer
 - Run : docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
 
+In $Env:ProgramData\docker\config you can create a daemon.json file in order to set few parameters. Here is a copy of my configuration :
+{
+"fixed-cidr": "192.168.51.0/24",
+"dns": ["8.8.4.4", "8.8.8.8"],
+"storage-opts": ["size=30GB"]
+}
+- fixed-cidr : change the adress range of the containers nat network. Default range was conflicting with my VPN.
+- dns : by default containers don't use DNS, I use Google DNS servers
+- storage-opts : by default the max storage per image is 20GB.
 
 If you want to uninstall :
 
