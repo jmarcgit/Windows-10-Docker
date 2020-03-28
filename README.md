@@ -50,11 +50,13 @@ In $Env:ProgramData\docker\config you can create a daemon.json file in order to 
 {
 "fixed-cidr": "192.168.51.0/24",
 "dns": ["8.8.4.4", "8.8.8.8"],
-"storage-opts": ["size=30GB"]
+"storage-opts": ["size=30GB"],
+"group": "Users"
 }
 - fixed-cidr : change the adress range of the containers nat network. Default range was conflicting with my VPN
 - dns : containers don't use DNS by default. I use Google DNS servers
 - storage-opts : the default max storage per image is 20GB
+- group : users allowed to run docker cli. Default is Administrators
 
 If you want to uninstall :
 
