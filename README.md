@@ -46,7 +46,10 @@ Now you can enjoy Docker containers in Windows 10 without the virtualization ove
 
 If you don't like the CLI you can now install Portainer :
 - Run : docker pull portainer/portainer
-- Run : docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
+- Run :
+```
+docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
+```
 
 In $Env:ProgramData\docker\config you can create a daemon.json file in order to set few parameters. Here is a copy of my configuration :
 ```
