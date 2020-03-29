@@ -66,7 +66,7 @@ In $Env:ProgramData\docker\config you can create a daemon.json file in order to 
 
 You have to restart the Docker service in order to apply the changes. A system reboot is recommended if you change the network addresses
 
-About docker-compose networking : compose will create networks that could have conflicting addresses with VPN. It's possible to define another network range in the docker-compose yaml. What I suggest to do is to just use the Docker default nat network. Example :
+About docker-compose networking : compose will create networks that could have conflicting addresses with your VPN software. It's possible to define another network range in the docker-compose yaml. What I suggest to do is to just use the Docker default nat network. Example :
 ```
 networks:
   net:
