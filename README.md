@@ -47,12 +47,14 @@ If you don't like the CLI you can now install Portainer :
 - Run : docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
 
 In $Env:ProgramData\docker\config you can create a daemon.json file in order to set few parameters. Here is a copy of my configuration :
+```
 {
 "fixed-cidr": "192.168.51.0/24",
 "dns": ["8.8.4.4", "8.8.8.8"],
 "storage-opts": ["size=30GB"],
 "group": "Users"
 }
+```
 - fixed-cidr : change the adress range of the containers nat network. Default range was conflicting with my VPN
 - dns : containers don't use any DNS by default. I use Google DNS servers
 - storage-opts : the default max storage per image is 20GB
@@ -60,6 +62,13 @@ In $Env:ProgramData\docker\config you can create a daemon.json file in order to 
 
 You have to restart the Docker service in order to apply the changes. A system reboot is recommended if you change the network addresses
 
+About docker-compose networking : compose will create networks that could have conflicting addresses with VPN. It's possible de define a network range in the docker-compose yaml. What I suggest to do is to just use the Docker default nat network. Example :
+```
+networks:
+  net:
+    external:
+      name: "nat"
+```
 If you want to uninstall :
 
 1. Stop the Docker Engine service
