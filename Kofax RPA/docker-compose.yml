@@ -4,6 +4,8 @@
 version: '2.1'
 networks:
   net:
+    external:
+      name: "nat"
 services:
   sqlserver-service:
     build:
