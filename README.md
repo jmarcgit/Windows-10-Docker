@@ -45,9 +45,8 @@ Now you can enjoy Docker containers in Windows 10 without the virtualization ove
 ## Few TIPS :
 
 If you don't like the CLI you can now install Portainer :
-- Run : docker pull portainer/portainer
-- Run :
 ```
+docker pull portainer/portainer
 docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
 ```
 
