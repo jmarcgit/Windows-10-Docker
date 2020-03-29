@@ -1,7 +1,7 @@
 # Windows-10-Docker
 Installation guide of Docker for Windows 10 without enabling Hyper-v
 
-## Manual steps :
+### Manual steps :
 
 1. Enable the containers feature in Windows 10
 	- Start a PowerShell as Administrator
@@ -42,6 +42,8 @@ Installation guide of Docker for Windows 10 without enabling Hyper-v
         
 Now you can enjoy Docker containers in Windows 10 without the virtualization overhead. The only constraint is that you have to choose a container system version that is matching your OS version. Run winver command in order to check what Windows 10 version you are running. I tested with 1903 and 1909 and I found that Windows 10 version 1909 can run 1903 based containers as well.
 
+## Few TIPS :
+
 If you don't like the CLI you can now install Portainer :
 - Run : docker pull portainer/portainer
 - Run : docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
@@ -69,7 +71,7 @@ networks:
     external:
       name: "nat"
 ```
-If you want to uninstall :
+## If you want to uninstall :
 
 1. Stop the Docker Engine service
 2. Run : dockerd --unregister-service
@@ -77,6 +79,6 @@ If you want to uninstall :
 4. Remove the $Env:ProgramData\docker directory (I recommend using docker-ci-zap https://github.com/moby/docker-ci-zap because some files have special access rights)
 5. Remove $env:ProgramFiles\docker from your PATH environment variable
   
-Known issues :
+## Known issues :
 - When removing images or containers sometimes physical layers aren't removed from the disk. This means that disk usage will grow and some cleaning will be needed after a while. (Stop docker service, run docker-ci-zap in order to remove the $Env:ProgramData\docker directory and start docker service again)
 - Windows 10 could complain about unregistered Windows copy. The problem was introduced by recent Windows update patches. A system reboot solves the problem for me
