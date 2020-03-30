@@ -49,6 +49,7 @@ If you don't like the CLI you can now install Portainer :
 docker pull portainer/portainer
 docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
 ```
+Then you can open the Portainer console using this url :  http://localhost:9000
 
 In $Env:ProgramData\docker\config you can create a daemon.json file in order to set few parameters. Here is a copy of my configuration :
 ```
