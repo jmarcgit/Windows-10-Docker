@@ -46,8 +46,8 @@ Now you can enjoy Docker containers in Windows 10 without the virtualization ove
 
 If you don't like the CLI you can now install Portainer :
 ```
-docker pull portainer/portainer
-docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer
+docker pull portainer/portainer:windows1909-amd64
+docker run -d --restart always --name portainer -h portainer -p 9000:9000 -v //./pipe/docker_engine://./pipe/docker_engine portainer/portainer:windows1909-amd64
 ```
 Then you can open the Portainer console using this url :  http://localhost:9000
 
