@@ -34,7 +34,7 @@ RUN del C:\vc_redist*x86.exe /f
 
 # Find dxva2.dll (can be found at C:\Windows\SysWOW64 of your host OS) and copy it inside OS directory of docker container.
 # Comment out or remove line below if you use ltsc2016 since dxva2.dll is already included into that docker image.
-#COPY docker-win/roboserver/dxva2.dll /windows/SysWOW64
+COPY docker-win/roboserver/dxva2.dll /windows/SysWOW64
 
 WORKDIR ${KAPOW_HOME}
 
